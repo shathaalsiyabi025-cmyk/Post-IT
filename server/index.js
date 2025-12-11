@@ -18,7 +18,11 @@ app.use(cors());
 
 
 const connectString =`mongodb+srv://admin:123admin@postitcluster.wxzjyk0.mongodb.net/postITDb?appName=PostITCluster`;
-mongoose.connect(connectString);
+mongoose.connect(connectString,{
+serverSelectionTimeoutMS:10000,
+  retryWrites: false,
+  ssl: true
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
